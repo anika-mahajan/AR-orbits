@@ -6,10 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/_spatial-computer/_Scenes/0_testbed.unity
+    path: Assets/_orbit-sim/_Scenes/0_testbed.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/_spatial-computer/_Scenes/0_toiotestbed.unity
+    path: Assets/_orbit-sim/_Scenes/orbit.unity
+    guid: 2d54b3dbe2f09457d8b72b1cacd19a31
+  - enabled: 1
+    path: Assets/_orbit-sim/_Scenes/0_toiotestbed.unity
     guid: 04e69cc4daef64aaf920891c978b6f4d
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 0642b2cbf90e3424db18886a04b17141, type: 2}
