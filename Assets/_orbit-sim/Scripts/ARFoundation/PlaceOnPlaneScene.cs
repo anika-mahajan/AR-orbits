@@ -102,6 +102,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
     public void TogglePlacement(bool state)
     {
         isPlacementActive = state;
+        Debug.Log(state);
     }
 
     }

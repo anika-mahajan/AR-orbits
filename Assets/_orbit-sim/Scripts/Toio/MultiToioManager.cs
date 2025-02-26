@@ -16,11 +16,11 @@ public class MultiToioManager : MonoBehaviour
     // [SerializeField]
     // private GameObject _target;
 
-    // /// <summary>
-    // /// Visual target to show planet movement
-    // /// </summary>
-    // [SerializeField]
-    // private GameObject _planet;
+    /// <summary>
+    /// Visual target to show planet movement
+    /// </summary>
+    [SerializeField]
+    private GameObject _planet;
 
     /// <summary>
     /// Flag to set whether to seek
@@ -95,7 +95,7 @@ public class MultiToioManager : MonoBehaviour
             orbiterHandle.Update();
             // orbiterHandle.Rotate2Rad(Math.Atan2(orbit.getOrbiterPosY(), orbit.getOrbiterPosX())).Exec();
             orbiterHandle.Move2Target(orbit.getOrbiterPosX(), orbit.getOrbiterPosY()).Exec();
-            // _planet.transform.position = new Vector3((float) orbit.convertToioToUnityX(orbit.getOrbiterPosX()), 0, (float) orbit.convertToioToUnityY(orbit.getOrbiterPosY()));
+            _planet.transform.position = new Vector3((float) orbit.convertToioToUnityX(orbit.getOrbiterPosX()), 0, (float) orbit.convertToioToUnityY(orbit.getOrbiterPosY()));
 
             // // Toio: center (250,250), extents (45, 455)
             //         // Toio board side dimension: 0.555f

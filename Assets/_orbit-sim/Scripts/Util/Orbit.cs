@@ -126,7 +126,7 @@ public class Orbit {
         double r = Math.Sqrt(Math.Pow(rotatedOrbiterPosX - rotatedSunPosX, 2.0) + Math.Pow(rotatedOrbiterPosY - rotatedSunPosY, 2.0));
     
         double G = 6.67430 * Math.Pow(10, -11);
-        double M = 1.989 * Math.Pow(10, 6);
+        double M = 1.989 * Math.Pow(10, 7);
         // double h = sqrt(G * M * this.a * (1 - sq(e)));
 
         // Debug.Log(" r and a value: r=" + r + ", a=" + a);

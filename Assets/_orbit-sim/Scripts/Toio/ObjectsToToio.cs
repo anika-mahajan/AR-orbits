@@ -39,7 +39,7 @@ public class ObjectsToToio : MonoBehaviour
     /// Rate of interpolation
     /// </summary>
     [SerializeField]
-    float _smoothTime = 0.2f;
+    float _smoothTime = 0.4f;
 
     // Local transform holders
     float x, z, angle;
@@ -87,20 +87,22 @@ public class ObjectsToToio : MonoBehaviour
             GetTrackedSunPosition();
             GetTrackedFocusPosition();
 
-            _orbiter.transform.position = Vector3.SmoothDamp(_orbiter.transform.position, _targetOrbiterPosition, ref _posVelocity, _smoothTime);
-            _orbiter.transform.rotation = Quaternion.Slerp(_orbiter.transform.rotation, _targetOrbiterRotation, _smoothTime);
+            // _orbiter.transform.position = Vector3.SmoothDamp(_orbiter.transform.position, _targetOrbiterPosition, ref _posVelocity, _smoothTime);
+            // _orbiter.transform.rotation = Quaternion.Slerp(_orbiter.transform.rotation, _targetOrbiterRotation, _smoothTime);
+            _orbiter.transform.localPosition =  _targetOrbiterPosition;
+            _orbiter.transform.localRotation = _targetOrbiterRotation;
 
             // _sun.transform.position = Vector3.SmoothDamp(_sun.transform.position, _targetSunPosition, ref _posVelocity, _smoothTime);
             // _sun.transform.rotation = Quaternion.Slerp(_sun.transform.rotation, _targetSunRotation, _smoothTime);
 
-            _sun.transform.position =  _targetSunPosition;
-            _sun.transform.rotation = _targetSunRotation;
+            _sun.transform.localPosition =  _targetSunPosition;
+            _sun.transform.localRotation = _targetSunRotation;
 
             // _focus.transform.localPosition = Vector3.SmoothDamp(_focus.transform.localPosition, _targetFocusPosition, ref _posVelocity, _smoothTime);
             // _focus.transform.localRotation = Quaternion.Slerp(_focus.transform.localRotation, _targetFocusRotation, _smoothTime);
 
-            _focus.transform.position =  _targetFocusPosition;
-            _focus.transform.rotation = _targetFocusRotation;
+            _focus.transform.localPosition =  _targetFocusPosition;
+            _focus.transform.localRotation = _targetFocusRotation;
         }
     }
 
@@ -134,7 +136,7 @@ public class ObjectsToToio : MonoBehaviour
         
         angle = _toioManager.getOrbiterCube().angle;
         
-        _targetOrbiterPosition = new Vector3(x, 0.1096f, z);
+        _targetOrbiterPosition = new Vector3(x, 0, z);
         
         Vector3 _targetEulers = new Vector3(0,angle,0);        
         _targetOrbiterRotation = Quaternion.Euler(_targetEulers); // Convert to Quaternion to avoid gimbal lock while spinning.
@@ -149,13 +151,10 @@ public class ObjectsToToio : MonoBehaviour
         // Toio board side dimension: 0.555f
         x = ((_toioManager.getSunCube().x - 250f)/205f) * 0.555f / 2f;
         z = -1f * ((_toioManager.getSunCube().y - 250f)/205f) * 0.555f / 2f;
-        Debug.Log("x: " + x + " z: " + z);
-        Debug.Log("target: " + _targetSunPosition);
-        Debug.Log("current: " + _sun.transform.position);
         
         angle = _toioManager.getSunCube().angle;
         
-        _targetSunPosition = new Vector3(x, 0.1353f, z);
+        _targetSunPosition = new Vector3(x, 0, z);
         
         Vector3 _targetEulers = new Vector3(0,angle,0);        
         _targetSunRotation = Quaternion.Euler(_targetEulers); // Convert to Quaternion to avoid gimbal lock while spinning.
@@ -173,7 +172,7 @@ public class ObjectsToToio : MonoBehaviour
         
         angle = _toioManager.getFocusCube().angle;
         
-        _targetFocusPosition = new Vector3(x, 0.1345f, z);
+        _targetFocusPosition = new Vector3(x, 0, z);
         
         Vector3 _targetEulers = new Vector3(0,angle,0);        
         _targetFocusRotation = Quaternion.Euler(_targetEulers); // Convert to Quaternion to avoid gimbal lock while spinning.

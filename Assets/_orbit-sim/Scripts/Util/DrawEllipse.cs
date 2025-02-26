@@ -87,83 +87,9 @@ public class DrawEllipse : MonoBehaviour
         float rotatedY = -1 * x * Mathf.Sin(rotationAngle) + y * Mathf.Cos(rotationAngle);
 
         // pointPosition = new Vector3(radius.x * Mathf.Cos (angle) + center.x, 0.0f, radius.y * Mathf.Sin (angle) + center.y);
-        pointPosition = new Vector3(rotatedX + center.x, 0.135f, rotatedY  + center.y);
+        pointPosition = new Vector3(rotatedX + center.x, 0.06f, rotatedY  + center.y);
 		// pointPosition = pointQuaternion * pointPosition;
 		
 		self_lineRenderer.SetPosition(index, pointPosition);		
 	}
 }
-
-
-// using UnityEngine;
-// using System;
-// using System.Threading.Tasks;
-
-// public class DrawEllipse : MonoBehaviour
-// {
-//     /// <summary>
-//     /// Reference to the in-scene Toio Manager
-//     /// </summary>
-//     [SerializeField]
-//     MultiToioManager _toioManager;
-
-//     public int segments = 100;
-//     double a = 0.0f; // Semi-major axis
-//     double b = 0.0f; // Semi-minor axis
-//     Vector3 center = Vector3.zero; // Center of the ellipse
-//     double rotationAngle = 0f; // Rotation in radians
-//     public LineRenderer lineRenderer;
-
-//     void Start()
-//     {
-//         if (lineRenderer == null) {
-//             lineRenderer = GetComponent<LineRenderer>();
-//         }
-
-//         lineRenderer.positionCount = segments + 1;
-//     }
-
-//     public void Draw()
-//     {
-//         a = _toioManager.getOrbit().getEllipseWidth() / 2;
-//         b = _toioManager.getOrbit().getEllipseHeight() / 2;
-
-//         center = new Vector3((float) _toioManager.getOrbit().getCenterX(), 0.1f, (float) _toioManager.getOrbit().getCenterY());
-
-//         rotationAngle = _toioManager.getOrbit().getRotationAngle();
-
-//         double angle = 0.0;
-//         for (int i = 0; i <= segments; i++)
-//         {
-//             // Calculate base ellipse point
-//             double x = a * Math.Cos(angle);
-//             double y = b * Math.Sin(angle);
-
-//             // Rotate point by rotationAngle
-//             double rotatedX = x * Math.Cos(rotationAngle) - y * Math.Sin(rotationAngle);
-//             double rotatedY = x * Math.Sin(rotationAngle) + y * Math.Cos(rotationAngle);
-
-//             // Set the point position with center offset
-//             lineRenderer.SetPosition(i, new Vector3((float)(center.x + rotatedX), center.y, (float)(center.y + rotatedY)));
-//             angle += 2 * Math.PI / segments;
-//         }
-//     }
-
-//     void Update() {
-//         if (_toioManager.getOrbit() != null) {
-//             Draw();
-//         }
-//     }
-
-//     public void SetCenter(Vector3 newCenter)
-//     {
-//         center = newCenter;
-//         Draw();
-//     }
-
-//     public void SetRotation(float newRotation)
-//     {
-//         rotationAngle = newRotation;
-//         Draw();
-//     }
-// }
