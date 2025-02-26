@@ -12,7 +12,7 @@ public class ToioTrackedObject : MonoBehaviour
     /// Reference to the in-scene Toio Manager
     /// </summary>
     [SerializeField]
-    SingleToioManager _toioManager;
+    MultiToioManager _toioManager;
 
     /// <summary>
     /// Rate of interpolation
