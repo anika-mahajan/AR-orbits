@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using toio;
 using System;
+using TMPro;
 
 /// <summary>
 /// Handles the behavior of a multiple Toios
@@ -26,6 +27,12 @@ public class MultiToioManager : MonoBehaviour
     /// </summary>
     [SerializeField]
     bool _shouldPlay = false;
+
+    /// <summary>
+    /// Text to display eccentricity
+    /// </summary>
+    [SerializeField] 
+    private TMP_Text _eccentricity;
 
     // Toio space Pose Vector
     [HideInInspector]
@@ -57,13 +64,6 @@ public class MultiToioManager : MonoBehaviour
          sunCube = cubeManager.cubes[1];
          focusCube = cubeManager.cubes[2];
 
-        //  Debug.Log(((orbiterCube.x - 250f)/205f) * 0.555f / 2f);
-        //  Debug.Log(-1 * ((orbiterCube.y - 250f)/205f) * 0.555f / 2f);
-        //  Debug.Log(((sunCube.x - 250f)/205f) * 0.555f / 2f);
-        //  Debug.Log(-1 * ((sunCube.y - 250f)/205f) * 0.555f / 2f);
-        //  Debug.Log(((focusCube.x - 250f)/205f) * 0.555f / 2f);
-        //  Debug.Log(-1 * ((focusCube.y - 250f)/205f) * 0.555f / 2f);
-
          // order is sun, focus, orbit (for connecting probably)
 
          orbiterHandle = cubeManager.handles[0];
@@ -80,31 +80,24 @@ public class MultiToioManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(orbiterCube != null && sunCube != null && focusCube != null && _shouldPlay){
+        if (orbiterCube != null && sunCube != null && focusCube != null && _shouldPlay)
+        {
             orbit.calculateVelocity();
             orbit.updateOrbiterPos();
 
             orbiterHandle.Update();
             // orbiterHandle.Rotate2Rad(Math.Atan2(orbit.getOrbiterPosY(), orbit.getOrbiterPosX())).Exec();
             orbiterHandle.Move2Target(orbit.getOrbiterPosX(), orbit.getOrbiterPosY()).Exec();
-            if (_planet != null)
-            {
-                _planet.transform.position = new Vector3((float)orbit.convertToioToUnityX(orbit.getOrbiterPosX()), 0, (float)orbit.convertToioToUnityY(orbit.getOrbiterPosY()));
-            }
-            // // Toio: center (250,250), extents (45, 455)
-                //         // Toio board side dimension: 0.555f
-                //         // Convert origin space coordinate into Toio space
-                //         float x = ((_planet.transform.localPosition.x / (0.555f / 2f)) * 205) + 250;
-                //         float y = -1f*(((_planet.transform.localPosition.z / (0.555f / 2f)) * 205 - 250));
-
-                //         // Create seeking vector - must be Integer Vec2
-                //         Vector2Int targetCoord = new Vector2Int((int)x, (int)y);                
-                //         Movement mv = orbiterHandle.Move2Target(targetCoord).Exec(); // Executes seek as a movement
-            }
+        }
         else if (orbiterCube != null && sunCube != null && focusCube != null)
         {
             orbit.setPositions(orbiterCube.x, orbiterCube.y, sunCube.x, sunCube.y, focusCube.x, focusCube.y);
             orbit.calculateEllipse();
+            _eccentricity.text = "Eccentricity: " + orbit.getEccentricity();
+        }
+        else
+        {
+            _eccentricity.text = "Eccentricity: null";
         }
     }
 

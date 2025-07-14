@@ -24,13 +24,13 @@ public class ObjectsToToio : MonoBehaviour
     private GameObject _orbiter;
 
     /// <summary>
-    /// Visual target to show planet movement
+    /// Visual target to show sun movement
     /// </summary>
     [SerializeField]
     private GameObject _sun;
 
     /// <summary>
-    /// Visual target to show planet movement
+    /// Visual target to show focus movement
     /// </summary>
     [SerializeField]
     private GameObject _focus;
