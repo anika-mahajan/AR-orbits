@@ -35,11 +35,11 @@ public class ObjectsToToio : MonoBehaviour
     [SerializeField]
     private GameObject _focus;
 
-    /// <summary>
-    /// Rate of interpolation
-    /// </summary>
-    [SerializeField]
-    float _smoothTime = 0.4f;
+    // /// <summary>
+    // /// Rate of interpolation
+    // /// </summary>
+    // [SerializeField]
+    // float _smoothTime = 0.4f;
 
     // Local transform holders
     float x, z, angle;
@@ -131,7 +131,7 @@ public class ObjectsToToio : MonoBehaviour
     {
         // Toio: center (250,250), extents (45, 455)
         // Toio board side dimension: 0.555f
-        x = ((_toioManager.getOrbiterCube().x - 250f)/205f) * 0.555f / 2f;
+        x = (((_toioManager.getOrbiterCube().x - 250f)/205f) * 0.555f) / 2f;
         z = -1f * ((_toioManager.getOrbiterCube().y - 250f)/205f) * 0.555f / 2f;
         
         angle = _toioManager.getOrbiterCube().angle;
