@@ -29,6 +29,12 @@ public class MultiToioManager : MonoBehaviour
     bool _shouldPlay = false;
 
     /// <summary>
+    /// Flag to set whether to have space background
+    /// </summary>
+    [SerializeField]
+    bool _shouldSpace = false;
+
+    /// <summary>
     /// Text to display eccentricity
     /// </summary>
     [SerializeField] 
@@ -110,7 +116,25 @@ public class MultiToioManager : MonoBehaviour
         _shouldPlay = state;
     }
 
-    public Orbit getOrbit() {
+    /// <summary>
+    /// Method to toggle play state
+    /// </summary>
+    /// <param name="state"></param>
+    public void ToggleSpace(bool state)
+    {
+        _shouldSpace = state;
+        if (_shouldSpace)
+        {
+            Debug.Log("active sky box");
+        }
+        else
+        {
+            Debug.Log("deactive sky box");
+        }
+    }
+
+    public Orbit getOrbit()
+    {
         return orbit;
     }
 
