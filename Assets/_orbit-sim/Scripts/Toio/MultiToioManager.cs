@@ -60,17 +60,29 @@ public class MultiToioManager : MonoBehaviour
     [SerializeField] 
     private GameObject lockCheckmark;
 
+    [SerializeField] 
+    private GameObject debugCube;
+    
+    Cube cube;
+
 
     // Async Start to allow for Toio connect await
     async void Start()
     {
         // Create a CubeManager and connect to the closest Toio
         cubeManager = new CubeManager();
-        await cubeManager.MultiConnect(3);
+        // await cubeManager.MultiConnect(3);
 
-        orbiterCube = cubeManager.cubes[0];
-        sunCube = cubeManager.cubes[1];
-        focusCube = cubeManager.cubes[2];
+        // orbiterCube = cubeManager.cubes[0];
+        // sunCube = cubeManager.cubes[1];
+        // focusCube = cubeManager.cubes[2];
+
+        cube = await cubeManager.SingleConnect();
+        orbiterCube = cube;
+        cube = await cubeManager.SingleConnect();
+        sunCube = cube;
+        cube = await cubeManager.SingleConnect();
+        focusCube = cube;
 
         // order is sun, focus, orbit (for connecting probably)
 
@@ -133,6 +145,7 @@ public class MultiToioManager : MonoBehaviour
     {
         _originLocked = state;
         OriginLockButton.changeObj(_originLocked);
+        debugCube.SetActive(_originLocked);
     }
 
     public Orbit getOrbit()

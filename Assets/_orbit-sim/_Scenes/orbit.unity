@@ -747,8 +747,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 637904873}
-  - component: {fileID: 637904876}
   - component: {fileID: 637904875}
+  - component: {fileID: 637904876}
   m_Layer: 0
   m_Name: DebugCube
   m_TagString: Untagged
@@ -820,7 +820,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 637904872}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &703395235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,6 +1150,7 @@ MonoBehaviour:
   playCheckmark: {fileID: 1340643568}
   lockBackground: {fileID: 497541854}
   lockCheckmark: {fileID: 786707354}
+  debugCube: {fileID: 637904872}
 --- !u!1 &1000707261
 GameObject:
   m_ObjectHideFlags: 0
