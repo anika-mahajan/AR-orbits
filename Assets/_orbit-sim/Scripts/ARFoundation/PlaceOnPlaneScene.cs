@@ -33,7 +33,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
         void Awake()
         {
             m_RaycastManager = GetComponent<ARRaycastManager>();
-            isPlacementActive = false;
+            isPlacementActive = true;
         }
 
         bool TryGetTouchPosition(out Vector2 touchPosition)

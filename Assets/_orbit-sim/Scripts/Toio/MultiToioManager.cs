@@ -16,6 +16,8 @@ public class MultiToioManager : MonoBehaviour
     [SerializeField]
     bool _shouldPlay = false;
 
+    bool _originLocked = true;
+
     /// <summary>
     /// Text to display eccentricity
     /// </summary>
@@ -49,6 +51,15 @@ public class MultiToioManager : MonoBehaviour
     [SerializeField] 
     private GameObject playCheckmark;
 
+    ButtonHandler OriginLockButton;
+    // ButtonHandler OriginLock;
+
+    [SerializeField] 
+    private GameObject lockBackground;
+    
+    [SerializeField] 
+    private GameObject lockCheckmark;
+
 
     // Async Start to allow for Toio connect await
     async void Start()
@@ -76,6 +87,9 @@ public class MultiToioManager : MonoBehaviour
 
         PlayButton = new ButtonHandler();
         PlayButton.setProperties(playBackground, playCheckmark, false);
+
+        OriginLockButton = new ButtonHandler();
+        OriginLockButton.setProperties(lockBackground, lockCheckmark, true);
     }
 
     void FixedUpdate()
@@ -109,6 +123,16 @@ public class MultiToioManager : MonoBehaviour
     {
         _shouldPlay = state;
         PlayButton.changeObj(_shouldPlay);
+    }
+
+    /// <summary>
+    /// Method to toggle play state
+    /// </summary>
+    /// <param name="state"></param>
+    public void ToggleOriginLock(bool state)
+    {
+        _originLocked = state;
+        OriginLockButton.changeObj(_originLocked);
     }
 
     public Orbit getOrbit()
