@@ -5,8 +5,6 @@ using UnityEngine;
 using System.Collections;
 using VolumetricLines;
 
-// [ExecuteInEditMode]
-[RequireComponent(typeof(LineRenderer))]
 public class DrawEllipse : MonoBehaviour
 {
 

@@ -39,31 +39,43 @@ public class MultiToioManager : MonoBehaviour
     CubeHandle focusHandle;
 
     Orbit orbit;
+
+    ButtonHandler PlayButton;
+    // ButtonHandler OriginLock;
+
+    [SerializeField] 
+    private GameObject playBackground;
     
+    [SerializeField] 
+    private GameObject playCheckmark;
+
 
     // Async Start to allow for Toio connect await
     async void Start()
     {
         // Create a CubeManager and connect to the closest Toio
-         cubeManager = new CubeManager();
-         await cubeManager.MultiConnect(3);
+        cubeManager = new CubeManager();
+        await cubeManager.MultiConnect(3);
 
-         orbiterCube = cubeManager.cubes[0];
-         sunCube = cubeManager.cubes[1];
-         focusCube = cubeManager.cubes[2];
+        orbiterCube = cubeManager.cubes[0];
+        sunCube = cubeManager.cubes[1];
+        focusCube = cubeManager.cubes[2];
 
-         // order is sun, focus, orbit (for connecting probably)
+        // order is sun, focus, orbit (for connecting probably)
 
-         orbiterHandle = cubeManager.handles[0];
-         sunHandle = cubeManager.handles[1];
-         focusHandle = cubeManager.handles[2];
+        orbiterHandle = cubeManager.handles[0];
+        sunHandle = cubeManager.handles[1];
+        focusHandle = cubeManager.handles[2];
 
-         // Set behavior flags to default
-         _shouldPlay = false;
+        // Set behavior flags to default
+        _shouldPlay = false;
 
-         orbit = new Orbit();
-         orbit.setPositions(orbiterCube.x, orbiterCube.y, sunCube.x, sunCube.y, focusCube.x, focusCube.y);
-         orbit.calculateEllipse();
+        orbit = new Orbit();
+        orbit.setPositions(orbiterCube.x, orbiterCube.y, sunCube.x, sunCube.y, focusCube.x, focusCube.y);
+        orbit.calculateEllipse();
+
+        PlayButton = new ButtonHandler();
+        PlayButton.setProperties(playBackground, playCheckmark, false);
     }
 
     void FixedUpdate()
@@ -96,6 +108,7 @@ public class MultiToioManager : MonoBehaviour
     public void TogglePlay(bool state)
     {
         _shouldPlay = state;
+        PlayButton.changeObj(_shouldPlay);
     }
 
     public Orbit getOrbit()
