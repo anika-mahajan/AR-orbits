@@ -127,19 +127,21 @@ public class ObjectsToToio : MonoBehaviour
     /// <summary>
     /// Method to convert position and rotation from Toio Coordinates to local coordinates relative to the origin.
     /// </summary>
-    public void GetTrackedOrbiterPosition()
+    public Vector3 GetTrackedOrbiterPosition()
     {
         // Toio: center (250,250), extents (45, 455)
         // Toio board side dimension: 0.555f
-        x = (((_toioManager.getOrbiterCube().x - 250f)/205f) * 0.555f) / 2f;
-        z = -1f * ((_toioManager.getOrbiterCube().y - 250f)/205f) * 0.555f / 2f;
-        
+        x = (((_toioManager.getOrbiterCube().x - 250f) / 205f) * 0.555f) / 2f;
+        z = -1f * ((_toioManager.getOrbiterCube().y - 250f) / 205f) * 0.555f / 2f;
+
         angle = _toioManager.getOrbiterCube().angle;
-        
+
         _targetOrbiterPosition = new Vector3(x, 0, z);
-        
-        Vector3 _targetEulers = new Vector3(0,angle,0);        
+
+        Vector3 _targetEulers = new Vector3(0, angle, 0);
         _targetOrbiterRotation = Quaternion.Euler(_targetEulers); // Convert to Quaternion to avoid gimbal lock while spinning.
+
+        return _targetOrbiterPosition;
     }
 
     /// <summary>

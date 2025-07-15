@@ -228,6 +228,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _toioManager: {fileID: 828586568}
   resolution: 500
+  m_numVertices: 50
+  m_volumetricLineStripMaterial: {fileID: 2100000, guid: 805305785548c4be0977875235404f59, type: 2}
+  m_color: {r: 0.20679937, g: 0.05228728, b: 0.4433962, a: 1}
+  m_start: 0
+  m_end: 3.1415927
 --- !u!120 &165373591
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -235,7 +240,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165373589}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -248,7 +253,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8a6b8c35617c4446aa407b506b202bc3, type: 2}
+  - {fileID: 2100000, guid: 805305785548c4be0977875235404f59, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2025,7 +2030,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shouldPlay: 0
-  _shouldSpace: 0
   _eccentricity: {fileID: 1689569567}
   cubePose: {x: 0, y: 0, z: 0}
 --- !u!1 &1000707261

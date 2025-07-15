@@ -17,12 +17,6 @@ public class MultiToioManager : MonoBehaviour
     bool _shouldPlay = false;
 
     /// <summary>
-    /// Flag to set whether to have space background
-    /// </summary>
-    [SerializeField]
-    bool _shouldSpace = false;
-
-    /// <summary>
     /// Text to display eccentricity
     /// </summary>
     [SerializeField] 
