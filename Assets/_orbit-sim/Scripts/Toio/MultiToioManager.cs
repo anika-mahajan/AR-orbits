@@ -10,18 +10,6 @@ using TMPro;
 /// </summary>
 public class MultiToioManager : MonoBehaviour
 {
-
-    // /// <summary>
-    // /// Visual target to move towards (specified in AR)
-    // /// </summary>
-    // [SerializeField]
-    // private GameObject _target;
-
-    /// <summary>
-    /// Visual target to show planet movement
-    /// </summary>
-    private GameObject _planet;
-
     /// <summary>
     /// Flag to set whether to play
     /// </summary>
@@ -114,23 +102,6 @@ public class MultiToioManager : MonoBehaviour
     public void TogglePlay(bool state)
     {
         _shouldPlay = state;
-    }
-
-    /// <summary>
-    /// Method to toggle play state
-    /// </summary>
-    /// <param name="state"></param>
-    public void ToggleSpace(bool state)
-    {
-        _shouldSpace = state;
-        if (_shouldSpace)
-        {
-            Debug.Log("active sky box");
-        }
-        else
-        {
-            Debug.Log("deactive sky box");
-        }
     }
 
     public Orbit getOrbit()
